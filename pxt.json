@@ -1,0 +1,22 @@
+{
+    "name": "thermal-camera",
+    "version": "0.1.0",
+    "description": "Thermal-Camera / SSD1306-OLED",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "oled.ts",
+        "amg8833.ts",
+        "thermalcamera.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "supportedTargets": [
+        "calliopemini"
+    ],
+    "preferredEditor": "blocksprj"
+}
