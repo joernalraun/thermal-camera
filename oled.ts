@@ -106,24 +106,31 @@ namespace oledssd1306 {
      * Writes a single character to the display.
      */
     function putChar(c: string) {
+        writeCustomChar(glyph(c));
+    }
+
+    /**
+     * 8x8 glyph of a character (8 column bytes, bit 0 = top row).
+     * Also used by the SSD1331 colour display.
+     */
+    export function glyph(c: string): string {
         let c1 = c.charCodeAt(0);
         switch (c1) {
-            case 196: writeCustomChar(extendedCharacters[0]); break;
-            case 214: writeCustomChar(extendedCharacters[1]); break;
-            case 220: writeCustomChar(extendedCharacters[2]); break;
-            case 228: writeCustomChar(extendedCharacters[3]); break;
-            case 246: writeCustomChar(extendedCharacters[4]); break;
-            case 252: writeCustomChar(extendedCharacters[5]); break;
-            case 223: writeCustomChar(extendedCharacters[6]); break;
-            case 172: writeCustomChar(extendedCharacters[7]); break;
-            case 176: writeCustomChar(extendedCharacters[8]); break;
+            case 196: return extendedCharacters[0];
+            case 214: return extendedCharacters[1];
+            case 220: return extendedCharacters[2];
+            case 228: return extendedCharacters[3];
+            case 246: return extendedCharacters[4];
+            case 252: return extendedCharacters[5];
+            case 223: return extendedCharacters[6];
+            case 172: return extendedCharacters[7];
+            case 176: return extendedCharacters[8];
             default:
                 if (c1 < 32 || c1 > 127) //Ignore non-printable ASCII characters. This can be modified for multilingual font.
                 {
-                    writeCustomChar("\x00\xFF\x81\x81\x81\xFF\x00\x00");
-                } else {
-                    writeCustomChar(basicFont[c1 - 32]);
+                    return "\x00\xFF\x81\x81\x81\xFF\x00\x00";
                 }
+                return basicFont[c1 - 32];
         }
     }
 

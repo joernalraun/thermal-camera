@@ -8,6 +8,7 @@
     "files": [
         "README.md",
         "oled.ts",
+        "ssd1331.ts",
         "amg8833.ts",
         "thermalcamera.ts"
     ],
